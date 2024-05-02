@@ -1,6 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Este programa permite al usuario ingresar un arreglo de números y luego ordenarlo de manera ascendente y descendente.
  */
 package javaestructuradatos;
 
@@ -8,94 +7,106 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- *
- * @author alejo
+ * Clase que representa un objeto Ejercicio3.
  */
 public class Ejercicio3 {
     private Scanner lc;
-    private int [] vector;
+    private int[] vector;
     private int tamahoArray;
     private boolean registro;
     
-    
-    public Ejercicio3(){
+    /**
+     * Constructor de la clase Ejercicio3.
+     */
+    public Ejercicio3() {
         lc = new Scanner(System.in);
-        this.tamahoArray = tamahoArray;
-
     }
     
-    public void TamahoArreglo(){
-        System.out.println("Ingresa el tamahno del vector: ");
+    /**
+     * Solicita al usuario ingresar el tamaño del arreglo.
+     */
+    public void TamahoArreglo() {
+        System.out.println("Ingresa el tamaño del vector: ");
         tamahoArray = lc.nextInt();
         vector = new int[tamahoArray];
     }
-    public void IngresarDatos(){
-        for(int i = 0; i < tamahoArray; i++){
-            System.out.println("Ingresa los datos del arreglos");
+    
+    /**
+     * Permite al usuario ingresar los datos del arreglo.
+     */
+    public void IngresarDatos() {
+        for(int i = 0; i < tamahoArray; i++) {
+            System.out.println("Ingresa los datos del arreglo");
             vector[i] = lc.nextInt();
         }
     }
-    public void OrdenMenorMayor(){
-        //Se ejecua el bucle dos veces: uno para recorrer el array y otro para la comparaciones
+    
+    /**
+     * Ordena el arreglo de menor a mayor.
+     */
+    public void OrdenMenorMayor() {
         for (int i = 0; i < tamahoArray - 1; i++) {
-            //Se genera un registro de los intercambios
             registro = true;
-            for (int j = 0; j < tamahoArray-i-1; j++) {
-                
-                //para ordenar en orden menor a mayor
-                if (vector[j]>vector[j+1]) {
+            for (int j = 0; j < tamahoArray - i - 1; j++) {
+                if (vector[j] > vector[j+1]) {
                     int intercambio = vector[j];
                     vector[j] = vector[j+1];
                     vector[j+1] = intercambio;
-                    
                     registro = false;
                 }
             }
-            if(registro == true){
+            if (registro == true) {
                 break;
             }
         }
-        System.out.println("----Arreglo Ordenado Menor a Mayor----");
+        System.out.println("---- Arreglo Ordenado de Menor a Mayor ----");
         String menorMayor = Arrays.toString(vector);
         System.out.println(menorMayor);
     }
-        public void OrdenMayorMenor(){
-        //Se ejecua el bucle dos veces: uno para recorrer el array y otro para la comparaciones
+    
+    /**
+     * Ordena el arreglo de mayor a menor.
+     */
+    public void OrdenMayorMenor() {
         for (int i = 0; i < tamahoArray - 1; i++) {
-            //Se genera un registro de los intercambios
             registro = true;
-            for (int j = 0; j < tamahoArray-i-1; j++) {
-                
-                //para ordenar en orden menor a mayor
-                if (vector[j]<vector[j+1]) {
+            for (int j = 0; j < tamahoArray - i - 1; j++) {
+                if (vector[j] < vector[j+1]) {
                     int intercambio = vector[j];
                     vector[j] = vector[j+1];
                     vector[j+1] = intercambio;
-                    
                     registro = false;
                 }
             }
-            if(registro == true){
+            if (registro == true) {
                 break;
             }
         }
-        System.out.println("----Arreglo Ordenado Mayor a Menor----");
+        System.out.println("---- Arreglo Ordenado de Mayor a Menor ----");
         String mayorMenor = Arrays.toString(vector);
         System.out.println(mayorMenor);
     }
-    public void imprimir (){
-        System.out.println("----Arreglo Original----");
+    
+    /**
+     * Imprime el arreglo original ingresado por el usuario.
+     */
+    public void imprimir() {
+        System.out.println("---- Arreglo Original ----");
         String original = Arrays.toString(vector);
         System.out.println(original);
     }
-    public static void main(String[] args){
+    
+    /**
+     * Método principal que ejecuta el programa.
+     * @param args Los argumentos de la línea de comandos (no se utilizan en este programa).
+     */
+    public static void main(String[] args) {
         Ejercicio3 vectorOrden;
         vectorOrden = new Ejercicio3();
         vectorOrden.TamahoArreglo();
         vectorOrden.IngresarDatos();
         vectorOrden.imprimir();
         vectorOrden.OrdenMayorMenor();
-        vectorOrden.OrdenMenorMayor();
-        
+        vectorOrden.OrdenMenorMayor();   
     }
 }
